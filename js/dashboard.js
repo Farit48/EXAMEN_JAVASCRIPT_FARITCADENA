@@ -41,15 +41,11 @@ class Mydash extends HTMLElement {
                 requestTareas.onsuccess = (event)=> {
                     
                     const datos = event.target.result;
-                    datos.forEach(element => {
-                        const text =JSON.stringify(element)
-                        const campo = document.createElement('div')
-                        show.appendChild(campo)
-                        campo.innerHTML = `<div>${text}</div>`
-                        console.log(text)
-                        
-                    });
-                    
+                    const text =JSON.stringify(datos)
+                    const campo = document.createElement('div')
+                    show.appendChild(campo)
+                    campo.innerHTML = `<div>${text}</div>`
+                    console.log(datos)
                     
                     
                     

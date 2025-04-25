@@ -30,14 +30,14 @@ class Agendar extends HTMLElement {
 
             abrirDB((db)=>{
                 console.log('Se dio click en guardar')
-                const nuewActivity ={
+                const nuewActivity =[{
                    titulo:document.getElementById('titulo').value,
                    descripcion: document.getElementById('desc').value,
                    ubicacion: document.getElementById('ubic').value,
                    horaI: document.getElementById('horaI').value,
                    horaF: document.getElementById('horaF').value,
                    fecha:Fecha
-                }
+                }]
                 const transaction = db.transaction(["Tareas"], "readwrite")
                 const miActividad = transaction.objectStore("Tareas")
                 const addmiActividad = miActividad.add(nuewActivity)
