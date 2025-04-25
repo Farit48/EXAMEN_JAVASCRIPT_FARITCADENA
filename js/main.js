@@ -1,6 +1,6 @@
 let db;
 function abrirDB(callback){
-    const request = indexedDB.open("My DataBase", 1);
+    const request = indexedDB.open("My DataBase", 2);
     
     request.onerror = (e)=>{
         console.log("Error al Leer la base de Datos", e.target.error);
@@ -15,7 +15,11 @@ function abrirDB(callback){
     request.onupgradeneeded = (e)=>{
         const db = e.target.result
         if(!db.objectStoreNames.contains("Usuarios")){
-            db.createObjectStore("Usuarios", {keyPath: "id"}).createIndex("porCorreo", "correo", {unique:true})
+            db.createObjectStore("Usuarios", {keyPath: "correo"}).createIndex("porCorreo", "correo", {unique:true})
+            console.log("Se ha actualizado la base de datos Con exito", db)
+        }
+        if(!db.objectStoreNames.contains("Tareas")){
+            db.createObjectStore("Tareas", {keyPath: "fecha"}).createIndex("porHora", "hora", {unique:true})
             console.log("Se ha actualizado la base de datos Con exito", db)
         }
     } 

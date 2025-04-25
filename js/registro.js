@@ -8,14 +8,13 @@ class Registro extends HTMLElement {
             </section>
             <section class="main_form">
                 <form action="" id="frmRegist" class="main_form-elements">
-                    <p>Correo nuevo</p>
+                    <p>Correo</p>
                     <input type="email" name="Usuario" id="emailReg">
                     <p>Ingrese contraseña nueva</p>
                     <input type="password" name="password" id="passwordReg">
-                    <p>id nuevo</p>
-                    <input type="text" name="id" id="id">
-                    <span>Profesor</span><input type="radio" name="cargo" id="cargo" value="Profe">
-                    <span>Admin</span> <input type="radio" name="cargo" id="cargo" value="Admin"><br>
+                    <p>Nombre</p>
+                    <input type="text" name="id" id="nombre">
+                    <br>
                     <button type="button" id="btnSave">guardar</button>
                 </form>
             </section>
@@ -30,10 +29,10 @@ class Registro extends HTMLElement {
             abrirDB((db)=>{
                 console.log('Se dio click en guardar')
                 const nuevoUser = {
-                id:document.getElementById('id').value,
+                nombre:document.getElementById('nombre').value,
                 correo:document.getElementById('emailReg').value,
                 contraseña:document.getElementById('passwordReg').value,
-                cargo:document.querySelector('input[name="cargo"]:checked').value
+                
                 }
             
                 const transaction = db.transaction(["Usuarios"], "readwrite")
